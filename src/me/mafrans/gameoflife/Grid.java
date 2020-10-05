@@ -1,6 +1,7 @@
 package me.mafrans.gameoflife;
 
 import java.awt.*;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class Grid {
@@ -25,5 +26,9 @@ public class Grid {
     public Cell getCell(int x, int y) {
         if (!this.cells.containsKey(new Point(x, y))) return null;
         return this.cells.get(new Point(x, y));
+    }
+
+    public Collection<Cell> getCells() {
+        return this.cells.values();
     }
 }
