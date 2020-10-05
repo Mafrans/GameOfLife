@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.Collection;
 import java.util.HashMap;
 
-public class Grid {
+public class Grid implements Cloneable {
     private HashMap<Point, Cell> cells;
     public int width;
     public int height;
@@ -30,5 +30,12 @@ public class Grid {
 
     public Collection<Cell> getCells() {
         return this.cells.values();
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Grid clone = new Grid(width, height);
+        clone.cells = (HashMap<Point, Cell>) cells.clone();
+        return clone;
     }
 }

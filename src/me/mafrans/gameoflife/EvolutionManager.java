@@ -9,10 +9,12 @@ import java.awt.Point;
 
 public class EvolutionManager {
     private GameOfLife gameOfLife;
+    public Grid nextGrid;
     private Rule[] rules;
 
     public EvolutionManager(GameOfLife gameOfLife) {
         this.gameOfLife = gameOfLife;
+        this.nextGrid = gameOfLife.grid.clone();
         this.rules = new Rule[] { new OverpopulationRule(), new UnderpopulationRule(), new ReproductionRule() };
     }
 
