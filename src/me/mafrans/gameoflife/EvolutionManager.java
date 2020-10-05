@@ -5,6 +5,8 @@ import me.mafrans.gameoflife.rules.ReproductionRule;
 import me.mafrans.gameoflife.rules.Rule;
 import me.mafrans.gameoflife.rules.UnderpopulationRule;
 
+import java.awt.Point;
+
 public class EvolutionManager {
     private GameOfLife gameOfLife;
     private Rule[] rules;
@@ -15,6 +17,18 @@ public class EvolutionManager {
     }
 
     public void step() {
+        Grid grid = this.gameOfLife.grid;
+        for(Cell cell : grid.getCells()) {
+            if(cell.isAlive) {
+                for(Rule rule : rules) {
+                    rule.apply(cell);
+                }
 
+                for(Point p : cell.neighbors) {
+                    gameOfLife.grid.setCell(p.x, p.y, false);
+                    rules[2].apply(gameOfLife.grid.getCell(p.x, p.y));
+                }
+            }
+        }
     }
 }
