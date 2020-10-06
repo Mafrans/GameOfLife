@@ -40,4 +40,14 @@ public class Grid implements Cloneable {
         for(Cell cell : getCells()) clone.setCell(cell.x, cell.y, cell.isAlive);
         return clone;
     }
+
+    public void populateRandomly() {
+        for (int ix = 0; ix < width; ix++) {
+            for (int iy = 0; iy < height; iy++) {
+                if(Math.random() < 0.5) {
+                    this.setCell(ix, iy, true);
+                }
+            }
+        }
+    }
 }

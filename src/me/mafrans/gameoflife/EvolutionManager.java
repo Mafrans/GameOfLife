@@ -21,10 +21,12 @@ public class EvolutionManager {
     public void step() {
         Grid grid = this.gameOfLife.grid;
         this.nextGrid = (Grid) grid.clone();
+        Benchmarker.next("Clone Time");
         for(Cell cell : grid.getCells()) {
             if(cell.isAlive) {
                 for(Rule rule : rules) {
                     rule.apply(cell);
+                    Benchmarker.next(rule.getClass().getSimpleName());
                 }
 
                 for(Point p : cell.neighbors) {
@@ -35,7 +37,9 @@ public class EvolutionManager {
                 }
             }
         }
+        Benchmarker.next("Rule Time");
 
         gameOfLife.grid = (Grid) nextGrid.clone();
+        Benchmarker.next("Clone Time 2");
     }
 }
