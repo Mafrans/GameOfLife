@@ -21,6 +21,6 @@ public class UnderpopulationRule extends Rule {
 
         if(count < 2) {
             evolutionManager.nextGrid.setCell(cell.x, cell.y, false);
-        }
+            }
     }
 }

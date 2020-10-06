@@ -30,16 +30,17 @@ public class Renderer extends JPanel {
 
         for(Cell cell : gameOfLife.grid.getCells()) {
             for (int ix = 0; ix < scale; ix++) {
-                if(cell.x + ix > height) continue;
+                if(cell.x * scale + ix > height) continue;
 
                 for (int iy = 0; iy < scale; iy++) {
-                    if(cell.y + iy > height) continue;
+                    if(cell.y * scale + iy > height) continue;
 
-                    this.image.setRGB(cell.x + ix, cell.y + iy, 0xFFFFFF);
+                    this.image.setRGB(cell.x * scale + ix, cell.y * scale + iy, 0xFFFFFF);
                 }
             }
         }
 
+        this.validate();
         this.repaint();
         this.updateUI();
     }

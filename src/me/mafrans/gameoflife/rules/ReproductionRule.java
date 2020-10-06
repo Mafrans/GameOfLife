@@ -13,13 +13,12 @@ public class ReproductionRule extends Rule {
     @Override
     public void apply(Cell cell) {
         if (cell.isAlive) return; //Only apply rule on dead cells
-
         int count = 0;
         for(Point p : cell.neighbors) {
             Cell c = cell.grid.getCell(p.x, p.y);
 
-            if(c == null || c.isAlive) count++;
-        }
+            if(c != null && c.isAlive) count++;
+            }
 
         if(count == 3) {
             evolutionManager.nextGrid.setCell(cell.x, cell.y, true);

@@ -20,6 +20,7 @@ public class EvolutionManager {
 
     public void step() {
         Grid grid = this.gameOfLife.grid;
+        this.nextGrid = (Grid) grid.clone();
         for(Cell cell : grid.getCells()) {
             if(cell.isAlive) {
                 for(Rule rule : rules) {

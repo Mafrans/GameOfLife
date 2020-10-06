@@ -37,7 +37,7 @@ public class Grid implements Cloneable {
     @Override
     protected Object clone() {
         Grid clone = new Grid(width, height);
-        clone.cells = (HashMap<Point, Cell>) cells.clone();
+        for(Cell cell : getCells()) clone.setCell(cell.x, cell.y, cell.isAlive);
         return clone;
     }
 }
