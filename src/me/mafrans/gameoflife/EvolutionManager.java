@@ -34,5 +34,7 @@ public class EvolutionManager {
                 }
             }
         }
+
+        gameOfLife.grid = (Grid) nextGrid.clone();
     }
 }
