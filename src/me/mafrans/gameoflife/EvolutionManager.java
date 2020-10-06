@@ -27,8 +27,10 @@ public class EvolutionManager {
                 }
 
                 for(Point p : cell.neighbors) {
-                    gameOfLife.grid.setCell(p.x, p.y, false);
-                    rules[2].apply(gameOfLife.grid.getCell(p.x, p.y));
+                    Cell n = gameOfLife.grid.getCell(p.x, p.y);
+                    if(n == null) n = new Cell(p.x, p.y, false);
+
+                    rules[2].apply(n);
                 }
             }
         }
