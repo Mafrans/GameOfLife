@@ -12,11 +12,13 @@ public class Grid implements Cloneable {
     public Grid(int width, int height) {
         this.width = width;
         this.height = height;
+
+        this.cells = new HashMap<Point, Cell>();
     }
 
     public void setCell(int x, int y, boolean isAlive) {
         if (isAlive) {
-            this.cells.put(new Point(x, y), new Cell(x, y, isAlive));
+            this.cells.put(new Point(x, y), new Cell(x, y, this, isAlive));
         }
         else {
             this.cells.remove(new Point(x, y));

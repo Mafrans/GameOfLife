@@ -16,7 +16,7 @@ public class OverpopulationRule extends Rule {
         for(Point p : cell.neighbors) {
             Cell c = cell.grid.getCell(p.x, p.y);
 
-            if(c.isAlive) count++;
+            if(c != null && c.isAlive) count++;
         }
 
         if(count > 3) {

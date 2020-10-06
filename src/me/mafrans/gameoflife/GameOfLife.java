@@ -6,5 +6,6 @@ public class GameOfLife {
 
     public GameOfLife(int width, int height) {
         this.grid = new Grid(width, height);
+        this.evolutionManager = new EvolutionManager(this);
     }
 }

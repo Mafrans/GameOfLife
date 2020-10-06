@@ -27,8 +27,8 @@ public class EvolutionManager {
                 }
 
                 for(Point p : cell.neighbors) {
-                    Cell n = gameOfLife.grid.getCell(p.x, p.y);
-                    if(n == null) n = new Cell(p.x, p.y, false);
+                    Cell n = grid.getCell(p.x, p.y);
+                    if(n == null) n = new Cell(p.x, p.y, grid, false);
 
                     rules[2].apply(n);
                 }
