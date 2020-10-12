@@ -21,6 +21,6 @@ public class OverpopulationRule extends Rule {
 
         if(count > 3) {
             evolutionManager.nextGrid.setCell(cell.x, cell.y, false);
-            }
+        }
     }
 }

@@ -12,7 +12,19 @@ public class ReproductionRule extends Rule {
 
     @Override
     public void apply(Cell cell) {
-        if (cell.isAlive) return; //Only apply rule on dead cells
+        if (cell.isAlive) {
+            for(Point p : cell.neighbors) {
+                Cell n = cell.grid.getCell(p.x, p.y);
+
+                if(n == null) n = new Cell(p.x, p.y, cell.grid, false);
+                else if(n.isAlive) continue;
+
+                this.apply(n);
+            }
+            return;
+        }
+
+
         int count = 0;
         for(Point p : cell.neighbors) {
             Cell c = cell.grid.getCell(p.x, p.y);

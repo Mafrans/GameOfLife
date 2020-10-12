@@ -22,20 +22,13 @@ public class EvolutionManager {
         Grid grid = this.gameOfLife.grid;
         this.nextGrid = (Grid) grid.clone();
         Benchmarker.next("Clone Time");
-        for(Cell cell : grid.getCells()) {
-            if(cell.isAlive) {
-                for(Rule rule : rules) {
+        for(Rule rule : rules) {
+            for(Cell cell : grid.getCells()) {
+                if(cell.isAlive) {
                     rule.apply(cell);
-                    Benchmarker.next(rule.getClass().getSimpleName());
-                }
-
-                for(Point p : cell.neighbors) {
-                    Cell n = grid.getCell(p.x, p.y);
-                    if(n == null) n = new Cell(p.x, p.y, grid, false);
-
-                    rules[2].apply(n);
                 }
             }
+            Benchmarker.next(rule.getClass().getSimpleName());
         }
         Benchmarker.next("Rule Time");
 
