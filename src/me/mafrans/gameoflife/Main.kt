@@ -5,17 +5,25 @@ import java.awt.event.KeyListener
 import javax.swing.JFrame
 
 fun main() {
-    // Do stuff here
+    val rows = 100
+    val columns = 100
+    val scale = 8
 
-    val gameOfLife = GameOfLife(800, 800);
-    val renderer = Renderer(gameOfLife, 1600, 1600, 2);
+    val gameOfLife = GameOfLife(columns, rows)
+    val renderer = Renderer(gameOfLife, scale)
     val frame = JFrame()
+
     frame.setTitle("Fint spel")
     frame.add(renderer)
-    frame.pack()
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
-    frame.setLocationRelativeTo(null)
+    frame.setResizable(false)
     frame.setVisible(true)
+    val insets = frame.insets;
+    frame.setSize(
+            columns * scale + insets.left + insets.right,
+            rows * scale + insets.top + insets.bottom
+    )
+    frame.setLocationRelativeTo(null)
 
     frame.addKeyListener(object : KeyListener {
         override fun keyTyped(e: KeyEvent?) {
