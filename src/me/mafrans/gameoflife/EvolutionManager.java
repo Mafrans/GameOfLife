@@ -19,6 +19,7 @@ public class EvolutionManager {
     }
 
     public void step() {
+        Benchmarker.next();
         Grid grid = this.gameOfLife.grid;
         this.nextGrid = (Grid) grid.clone();
         Benchmarker.next("Clone Time");
@@ -32,6 +33,7 @@ public class EvolutionManager {
         }
         Benchmarker.next("Rule Time");
 
+        nextGrid.removeDead();
         gameOfLife.grid = (Grid) nextGrid.clone();
         Benchmarker.next("Clone Time 2");
     }

@@ -6,4 +6,7 @@ public class Benchmarker {
         System.out.println(String.format("%s: %dms", title, System.currentTimeMillis() - lastTime));
         lastTime = System.currentTimeMillis();
     }
+    public static void next() {
+        lastTime = System.currentTimeMillis();
+    }
 }

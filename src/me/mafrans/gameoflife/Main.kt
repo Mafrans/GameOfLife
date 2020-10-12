@@ -7,8 +7,8 @@ import javax.swing.JFrame
 fun main() {
     // Do stuff here
 
-    val gameOfLife = GameOfLife(800, 800);
-    val renderer = Renderer(gameOfLife, 1600, 1600, 2);
+    val gameOfLife = GameOfLife(400, 400);
+    val renderer = Renderer(gameOfLife, 1600, 1600, 4);
     val frame = JFrame()
     frame.setTitle("Fint spel")
     frame.add(renderer)
