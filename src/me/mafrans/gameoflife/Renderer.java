@@ -3,7 +3,6 @@ package me.mafrans.gameoflife;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.Raster;
 
 public class Renderer extends JPanel {
     private GameOfLife gameOfLife;
@@ -12,11 +11,11 @@ public class Renderer extends JPanel {
     private int scale;
     private BufferedImage image;
 
-    public Renderer(GameOfLife gameOfLife, int width, int height, int scale) {
+    public Renderer(GameOfLife gameOfLife, int scale) {
         this.gameOfLife = gameOfLife;
-        this.width = width;
-        this.height = height;
         this.scale = scale;
+        this.width = gameOfLife.grid.width*scale;
+        this.height = gameOfLife.grid.height*scale;
     }
 
     @Override
