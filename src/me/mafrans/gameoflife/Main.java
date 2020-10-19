@@ -7,8 +7,8 @@ import java.awt.event.KeyListener;
 
 public class Main {
     public static void main(String[] args) {
-        int rows = 300;
-        int columns = 300;
+        int rows = 200;
+        int columns = 200;
         int scale = 4;
 
         GameOfLife gameOfLife = new GameOfLife(columns, rows);
@@ -32,7 +32,6 @@ public class Main {
             public void keyPressed(KeyEvent e) {
                 gameOfLife.evolutionManager.step();
                 renderer.draw();
-                Benchmarker.next("Render Time");
             }
 
             @Override public void keyReleased(KeyEvent e) { }

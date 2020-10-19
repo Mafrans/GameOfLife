@@ -6,6 +6,11 @@ import me.mafrans.gameoflife.rules.Rule;
 import me.mafrans.gameoflife.rules.UnderpopulationRule;
 
 import java.awt.Point;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class EvolutionManager {
     private GameOfLife gameOfLife;
@@ -19,22 +24,18 @@ public class EvolutionManager {
     }
 
     public void step() {
-        Benchmarker.next();
         Grid grid = this.gameOfLife.grid;
         this.nextGrid = (Grid) grid.clone();
-        Benchmarker.next("Clone Time");
-        for(Rule rule : rules) {
+
+        for(Rule rule : this.rules) {
             for(Cell cell : grid.getCells()) {
                 if(cell.isAlive) {
                     rule.apply(cell);
                 }
             }
-            Benchmarker.next(rule.getClass().getSimpleName());
         }
-        Benchmarker.next("Rule Time");
 
-        nextGrid.removeDead();
-        gameOfLife.grid = (Grid) nextGrid.clone();
-        Benchmarker.next("Clone Time 2");
+        this.nextGrid.removeDead();
+        this.gameOfLife.grid = (Grid) this.nextGrid.clone();
     }
 }
