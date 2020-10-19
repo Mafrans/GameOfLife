@@ -14,7 +14,6 @@ public class KeyboardListener implements KeyListener {
     public void keyTyped(KeyEvent e) {
         window.gameOfLife.evolutionManager.step();
         window.renderer.draw();
-        Benchmarker.next("Render Time");
     }
 
     @Override
