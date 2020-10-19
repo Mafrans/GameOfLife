@@ -1,6 +1,5 @@
 package me.mafrans.gameoflife.rules;
 
-import me.mafrans.gameoflife.Benchmarker;
 import me.mafrans.gameoflife.Cell;
 import me.mafrans.gameoflife.EvolutionManager;
 
